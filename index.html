@@ -18,8 +18,8 @@ h3{font-size:17px;margin:0 0 10px}
 .meta div{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:12px 14px;font-size:14px}
 .meta b{display:block;font-size:12px;color:var(--muted);font-weight:600;text-transform:uppercase;letter-spacing:.04em}
 .note{background:#fff8e6;border:1px solid #f0dca8;border-radius:10px;padding:12px 14px;font-size:14px}
-table{width:100%;border-collapse:collapse;background:var(--card);border:1px solid var(--line);border-radius:10px;overflow:hidden;font-size:14px}
-th,td{text-align:left;padding:9px 12px;border-bottom:1px solid var(--line);vertical-align:top}
+table{width:100%;min-width:0;border-collapse:collapse;background:var(--card);border:1px solid var(--line);border-radius:10px;overflow:hidden;font-size:14px}
+th,td{text-align:left;padding:8px 10px;border-bottom:1px solid var(--line);vertical-align:top}
 th{background:#efede8;font-weight:600}
 .bug{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:18px;margin:14px 0}
 .bug-head{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-bottom:10px}
@@ -38,17 +38,17 @@ th{background:#efede8;font-weight:600}
 .ok{color:var(--ok);font-weight:600}
 .no{color:var(--hi);font-weight:600}
 ul.plain{padding-left:20px}
-@media (max-width:600px){.bug dl{grid-template-columns:1fr}.bug dt{margin-top:6px}h1{font-size:23px}}
+@media (max-width:600px){table{font-size:13px}th,td{padding:7px 6px}.bug dl{grid-template-columns:1fr}.bug dt{margin-top:6px}h1{font-size:23px}}
 </style>
 </head>
 <body>
 <div class="wrap">
 
 <h1>Пример отчёта о тестировании сайта</h1>
-<p class="lead">Обезличенный пример: короткая проверка сайта ремонтной компании (калькулятор стоимости, форма заявки, тест-опрос) глазами обычного посетителя.</p>
+<p class="lead">Обезличенный пример: короткая проверка сайта ремонтной компании (калькулятор стоимости, форма заявки, меню на телефоне) глазами обычного посетителя.</p>
 
 <div class="meta">
-  <div><b>Объект</b>Сайт услуг «Сайт А», 6 страниц, калькулятор, квиз, форма заявки</div>
+  <div><b>Объект</b>Сайт услуг «Сайт А», калькулятор, форма заявки, меню</div>
   <div><b>Дата</b>17.11.2026</div>
   <div><b>Окружение</b>Windows 10, Google Chrome; ширина 1280 px и режим телефона 375×812</div>
   <div><b>Итог</b>5 ошибок (2 средних, 2 низких, 1 косметическая), 3 неудобных места</div>
@@ -57,7 +57,7 @@ ul.plain{padding-left:20px}
 <p class="note">Это учебный пример: проверялся демо-сайт, сделанный нами самими, поэтому заявки можно было отправлять без вреда для чужого бизнеса. Название и адрес сайта скрыты. На реальном проекте отчёт оформляется так же, но охватывает все роли, кабинеты и сценарии из задания.</p>
 
 <h2>1. Что проверено</h2>
-<table>
+<div style="overflow-x:auto"><table>
 <tr><th>Раздел / сценарий</th><th>Компьютер</th><th>Телефон</th><th>Результат</th></tr>
 <tr><td>Главная страница: первый экран, кнопки, меню</td><td class="ok">да</td><td class="ok">да</td><td>Без ошибок</td></tr>
 <tr><td>Меню на телефоне (открыть, перейти, закрыть)</td><td>—</td><td class="ok">да</td><td>Без ошибок</td></tr>
@@ -67,7 +67,7 @@ ul.plain{padding-left:20px}
 <tr><td>Закрытие окна: крестик, клавиша Esc</td><td class="ok">да</td><td class="ok">да</td><td>Ошибка №4</td></tr>
 <tr><td>Горизонтальная прокрутка, наложение блоков на телефоне</td><td>—</td><td class="ok">да</td><td>Сдвига вбок нет; ошибка №3</td></tr>
 <tr><td>Подвал: контакты, ссылки</td><td class="ok">да</td><td class="ok">да</td><td>Без ошибок</td></tr>
-</table>
+</table></div>
 
 <h2>2. Отчёт об ошибках</h2>
 
