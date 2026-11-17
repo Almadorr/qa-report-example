@@ -1,0 +1,162 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Пример отчёта о тестировании</title>
+<meta name="robots" content="noindex">
+<style>
+:root{--bg:#f6f5f2;--card:#fff;--ink:#1d1f23;--muted:#62666e;--line:#e3e1dc;--hi:#c0392b;--mid:#d68910;--lo:#2e86c1;--ok:#1e8449}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.55 system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif}
+.wrap{max-width:920px;margin:0 auto;padding:32px 16px 64px}
+h1{font-size:28px;line-height:1.2;margin:0 0 8px}
+h2{font-size:21px;margin:40px 0 12px;padding-top:8px;border-top:2px solid var(--ink)}
+h3{font-size:17px;margin:0 0 10px}
+.lead{color:var(--muted);margin:0 0 20px}
+.meta{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:10px;margin:20px 0}
+.meta div{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:12px 14px;font-size:14px}
+.meta b{display:block;font-size:12px;color:var(--muted);font-weight:600;text-transform:uppercase;letter-spacing:.04em}
+.note{background:#fff8e6;border:1px solid #f0dca8;border-radius:10px;padding:12px 14px;font-size:14px}
+table{width:100%;border-collapse:collapse;background:var(--card);border:1px solid var(--line);border-radius:10px;overflow:hidden;font-size:14px}
+th,td{text-align:left;padding:9px 12px;border-bottom:1px solid var(--line);vertical-align:top}
+th{background:#efede8;font-weight:600}
+.bug{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:18px;margin:14px 0}
+.bug-head{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-bottom:10px}
+.id{font-weight:700;color:var(--muted)}
+.tag{font-size:12px;font-weight:700;padding:2px 9px;border-radius:99px;color:#fff}
+.t-hi{background:var(--hi)}.t-mid{background:var(--mid)}.t-lo{background:var(--lo)}.t-cos{background:#7f8c8d}
+.env{font-size:12px;padding:2px 9px;border-radius:99px;border:1px solid var(--line);color:var(--muted)}
+.bug dl{display:grid;grid-template-columns:150px 1fr;gap:6px 14px;margin:0;font-size:15px}
+.bug dt{color:var(--muted);font-weight:600}
+.bug dd{margin:0}
+.bug ol{margin:0;padding-left:20px}
+.shot{margin:12px 0 0}
+.shot img{display:block;max-width:100%;height:auto;border:1px solid var(--line);border-radius:8px}
+.shot.phone img{max-width:300px}
+.shot figcaption{font-size:13px;color:var(--muted);margin-top:4px}
+.ok{color:var(--ok);font-weight:600}
+.no{color:var(--hi);font-weight:600}
+ul.plain{padding-left:20px}
+@media (max-width:600px){.bug dl{grid-template-columns:1fr}.bug dt{margin-top:6px}h1{font-size:23px}}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<h1>Пример отчёта о тестировании сайта</h1>
+<p class="lead">Обезличенный пример: короткая проверка сайта ремонтной компании (калькулятор стоимости, форма заявки, тест-опрос) глазами обычного посетителя.</p>
+
+<div class="meta">
+  <div><b>Объект</b>Сайт услуг «Сайт А», 6 страниц, калькулятор, квиз, форма заявки</div>
+  <div><b>Дата</b>17.11.2026</div>
+  <div><b>Окружение</b>Windows 10, Google Chrome; ширина 1280 px и режим телефона 375×812</div>
+  <div><b>Итог</b>5 ошибок (2 средних, 2 низких, 1 косметическая), 3 неудобных места</div>
+</div>
+
+<p class="note">Это учебный пример: проверялся демо-сайт, сделанный нами самими, поэтому заявки можно было отправлять без вреда для чужого бизнеса. Название и адрес сайта скрыты. На реальном проекте отчёт оформляется так же, но охватывает все роли, кабинеты и сценарии из задания.</p>
+
+<h2>1. Что проверено</h2>
+<table>
+<tr><th>Раздел / сценарий</th><th>Компьютер</th><th>Телефон</th><th>Результат</th></tr>
+<tr><td>Главная страница: первый экран, кнопки, меню</td><td class="ok">да</td><td class="ok">да</td><td>Без ошибок</td></tr>
+<tr><td>Меню на телефоне (открыть, перейти, закрыть)</td><td>—</td><td class="ok">да</td><td>Без ошибок</td></tr>
+<tr><td>Калькулятор: вид ремонта, площадь, тип жилья, санузлы, доп. работы</td><td class="ok">да</td><td class="ok">да</td><td>Ошибки №1, №2, №5</td></tr>
+<tr><td>Калькулятор: ввод неверных значений (0, минус, пусто, слишком много)</td><td class="ok">да</td><td>—</td><td>Ошибки №1, №2</td></tr>
+<tr><td>Форма «Отправить расчёт»: пустые поля, пробелы, короткий телефон</td><td class="ok">да</td><td class="ok">да</td><td>Ошибки №3, №4, неудобство №1</td></tr>
+<tr><td>Закрытие окна: крестик, клавиша Esc</td><td class="ok">да</td><td class="ok">да</td><td>Ошибка №4</td></tr>
+<tr><td>Горизонтальная прокрутка, наложение блоков на телефоне</td><td>—</td><td class="ok">да</td><td>Сдвига вбок нет; ошибка №3</td></tr>
+<tr><td>Подвал: контакты, ссылки</td><td class="ok">да</td><td class="ok">да</td><td>Без ошибок</td></tr>
+</table>
+
+<h2>2. Отчёт об ошибках</h2>
+
+<div class="bug">
+  <div class="bug-head"><span class="id">№1</span><span class="tag t-mid">Средняя</span><span class="env">Компьютер · Chrome</span></div>
+  <h3>Калькулятор принимает отрицательную площадь и молча считает другую</h3>
+  <dl>
+    <dt>Шаги</dt><dd><ol><li>Открыть главную страницу, блок «Калькулятор».</li><li>В поле «Площадь квартиры» стереть значение и ввести <b>-20</b>.</li><li>Посмотреть на итог справа.</li></ol></dd>
+    <dt>Ожидаемо</dt><dd>Поле не даёт ввести минус или сразу подсказывает: «Площадь от 10 до 300 м²», а значение в поле исправляется на 10.</dd>
+    <dt>Фактически</dt><dd>В поле остаётся «-20», а итог считается для 10 м² («Капитальный ремонт, 10 м² — 185 000 ₽»). Посетитель видит одно число в поле и другое в расчёте. То же при вводе 0 и 5.</dd>
+  </dl>
+  <figure class="shot"><img src="img/01-minus-area.jpg" alt="В поле площади -20, в расчёте 10 м²" loading="lazy"><figcaption>В поле «-20», в расчёте «10 м²»</figcaption></figure>
+</div>
+
+<div class="bug">
+  <div class="bug-head"><span class="id">№2</span><span class="tag t-mid">Средняя</span><span class="env">Компьютер · Chrome</span></div>
+  <h3>Поле и ползунок площади имеют разные пределы</h3>
+  <dl>
+    <dt>Шаги</dt><dd><ol><li>В калькуляторе ввести площадь <b>250</b>.</li><li>Посмотреть на ползунок рядом с полем.</li><li>Ввести площадь <b>1000</b>.</li></ol></dd>
+    <dt>Ожидаемо</dt><dd>У поля и ползунка один и тот же предел; при выходе за предел появляется понятная подсказка.</dd>
+    <dt>Фактически</dt><dd>Поле принимает до 300 м², ползунок — только до 200 м². При 250 ползунок упирается в край, и если его тронуть, площадь сбросится до 200. При 1000 в поле остаётся «1000», а расчёт идёт для 300 м² без предупреждения.</dd>
+  </dl>
+  <figure class="shot"><img src="img/02-area-250.jpg" alt="Площадь 250, ползунок в крайнем положении" loading="lazy"><figcaption>250 м²: ползунок уже в крайней правой точке</figcaption></figure>
+</div>
+
+<div class="bug">
+  <div class="bug-head"><span class="id">№3</span><span class="tag t-lo">Низкая</span><span class="env">Телефон 375 px · Chrome</span></div>
+  <h3>На телефоне крестик закрытия перекрывает заголовок формы</h3>
+  <dl>
+    <dt>Шаги</dt><dd><ol><li>Открыть сайт на телефоне (ширина 375 px).</li><li>В калькуляторе нажать «Отправить расчёт».</li></ol></dd>
+    <dt>Ожидаемо</dt><dd>Заголовок «Отправить расчёт» виден целиком, крестик стоит отдельно.</dd>
+    <dt>Фактически</dt><dd>Крестик закрывает последние буквы заголовка. Кроме того, знак «₽» в расчёте переносится на отдельную строку.</dd>
+  </dl>
+  <figure class="shot phone"><img src="img/03-mobile-close.jpg" alt="Крестик перекрывает заголовок формы на телефоне" loading="lazy"><figcaption>«Отправить расчё…» — конец слова под крестиком</figcaption></figure>
+</div>
+
+<div class="bug">
+  <div class="bug-head"><span class="id">№4</span><span class="tag t-lo">Низкая</span><span class="env">Компьютер · Chrome</span></div>
+  <h3>Окно заявки не закрывается клавишей Esc</h3>
+  <dl>
+    <dt>Шаги</dt><dd><ol><li>Нажать «Отправить расчёт».</li><li>Нажать на клавиатуре Esc.</li></ol></dd>
+    <dt>Ожидаемо</dt><dd>Окно закрывается, как на большинстве сайтов.</dd>
+    <dt>Фактически</dt><dd>Окно остаётся открытым, закрыть можно только крестиком.</dd>
+  </dl>
+  <figure class="shot"><img src="img/04-esc.jpg" alt="Окно заявки открыто после нажатия Esc" loading="lazy"><figcaption>Окно после нажатия Esc</figcaption></figure>
+</div>
+
+<div class="bug">
+  <div class="bug-head"><span class="id">№5</span><span class="tag t-cos">Косметическая</span><span class="env">Компьютер и телефон</span></div>
+  <h3>Неверное склонение в сроке работ</h3>
+  <dl>
+    <dt>Шаги</dt><dd><ol><li>В калькуляторе выбрать «Капитальный», площадь 54 м².</li><li>Посмотреть строку «Срок работ».</li></ol></dd>
+    <dt>Ожидаемо</dt><dd>«50–63 дня».</dd>
+    <dt>Фактически</dt><dd>«50–63 дней». Так же «26–33 дней» при 10 м². Слово «дней» стоит всегда, без учёта последнего числа.</dd>
+  </dl>
+  <figure class="shot phone"><img src="img/05-mobile-days.jpg" alt="Срок работ 50–63 дней" loading="lazy"><figcaption>«50–63 дней» вместо «50–63 дня»</figcaption></figure>
+</div>
+
+<h2>3. Неудобные и непонятные места</h2>
+<div class="bug">
+  <h3>1. Форма подсвечивает поля красным, но не говорит, что не так</h3>
+  <p>Если ввести в имя только пробелы, а в телефон две цифры, и нажать «Отправить заявку», поля становятся красными без единого слова. Посетитель не понимает, что именно исправить. Предложение: короткая подпись под полем — «Введите имя», «Номер должен содержать 10 цифр».</p>
+  <figure class="shot"><img src="img/06-form-red.jpg" alt="Поля формы подсвечены красным без подсказки" loading="lazy"><figcaption>Красная рамка без пояснения</figcaption></figure>
+</div>
+<div class="bug">
+  <h3>2. Неясно, что произошло с введённой площадью</h3>
+  <p>Когда площадь вне пределов, сайт сам подставляет другое число, но ничего не сообщает (см. №1 и №2). Человек может отправить заявку с расчётом не для своей квартиры. Предложение: показывать подсказку «Площадь от 10 до 300 м²» и исправлять число прямо в поле.</p>
+</div>
+<div class="bug">
+  <h3>3. На узком экране строка «Капитальный ремонт, 250 м²» переносится</h3>
+  <p>Единица «м²» уезжает на следующую строку отдельно от числа. Мелочь, но расчёт читается хуже. Предложение: не разрывать число и единицу.</p>
+</div>
+
+<h2>4. Что не удалось проверить и почему</h2>
+<ul class="plain">
+  <li>Доставку заявки до компании: демо-сайт не отправляет данные никуда, проверено только поведение формы.</li>
+  <li>Safari на iPhone и Mac: физических устройств Apple нет, телефон проверялся в режиме телефона браузера.</li>
+  <li>В этом коротком примере — только Chrome; в полной проверке добавляются Edge и Firefox.</li>
+</ul>
+
+<h2>5. Предложения по улучшению</h2>
+<ul class="plain">
+  <li>Сделать одинаковые пределы у поля и ползунка площади и показывать их рядом с полем.</li>
+  <li>Добавить текстовые подсказки к ошибкам в форме.</li>
+  <li>Закрывать окна клавишей Esc.</li>
+  <li>Убрать крестик закрытия из строки заголовка на узких экранах.</li>
+  <li>Склонять «день / дня / дней» по последнему числу.</li>
+</ul>
+
+</div>
+</body>
+</html>
